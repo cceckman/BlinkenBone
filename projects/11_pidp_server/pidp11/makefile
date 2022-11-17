@@ -1,6 +1,6 @@
 
 
-# call with MAKE_TARGET_ARCH=X86 or =RPI
+# call with MAKE_TARGET_ARCH=X86 or =RPI or =RPI64
 
 
 #
@@ -28,8 +28,14 @@ ifeq ($(MAKE_TARGET_ARCH),RPI)
 	OBJDIR=bin-rpi
 	SSHTARGET=pi@raspberrypi
 	LDFLAGS += -lrt
+else
+ifeq ($(MAKE_TARGET_ARCH),RPI64)
+	CC=aarch64-linux-gnu-gcc -std=c99 -U__STRICT_ANSI__ $(CC_DBG_FLAGS) $(OS_CCDEFS) -I.
+	OBJDIR=bin-rpi64
+	SSHTARGET=pi@raspberrypi
+	LDFLAGS += -lrt
 endif
-
+endif
 endif
 
 # Reference also the standard blinkenbone server in BLINKENLIGHT_SERVER_DIR
