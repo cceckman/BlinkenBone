@@ -29,6 +29,7 @@
         <javac srcdir="${dir.root}/07.0_blinkenlight_api/java"
                 destdir="${dir.project}/bin"
                 target="1.6" source="1.6" >
+                <compilerarg line="-encoding utf-8"/>
                 <classpath refid="otherjars"/>
         </javac>
 
@@ -36,6 +37,7 @@
         <javac srcdir="${dir.project}/src"
                 destdir="${dir.project}/bin"
                 target="1.6" source="1.6" >
+                <compilerarg line="-encoding utf-8"/>
                 <classpath refid="otherjars"/>
         </javac>
      </target>
